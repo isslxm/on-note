@@ -1,0 +1,49 @@
+{% extends 'notepad/base.html' %}
+{% block content %}
+<style>
+    .welcome-section {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e8f0ff, #fef9f4);
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        padding: 40px;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .welcome-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .welcome-sub {
+        font-size: 1.25rem;
+        color: #555;
+    }
+
+    .welcome-buttons .btn {
+        font-size: 18px;
+        padding: 10px 24px;
+    }
+</style>
+<div class="welcome-section text-center">
+    <div>
+        <h1 class="welcome-heading mb-3">📝 Welcome!</h1>
+        <p class="welcome-sub mb-4">A simple, convenient and secure way to store your ideas.</p>
+        {% if not user.is_authenticated %}
+        <div class="welcome-buttons">
+            <a href="{% url 'register' %}" class="btn btn-primary me-3">Sign up</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary">Sign in</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

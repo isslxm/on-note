@@ -1,0 +1,10 @@
+{% extends 'notepad/base.html' %}
+{% block content %}
+<h2 class="mb-3">{{ note.title }}</h2>
+<p style="white-space: pre-line;">{{ note.content }}</p>
+<p class="text-muted small mt-3">Created: {{ note.created|date:"d.m.Y H:i" }}</p>
+
+<a href="{% url 'note_edit' note.pk %}" class="btn btn-warning mt-3">✏️ Edit</a>
+<a href="{% url 'note_delete' note.pk %}" class="btn btn-danger mt-3 ms-2">🗑 Delete</a>
+<a href="{% url 'note_list' %}" class="btn btn-outline-primary mt-3">← Back</a>
+{% endblock %}
